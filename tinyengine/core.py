@@ -98,11 +98,28 @@ class Square():
 
 
 class Sprite():
-    def __init__(self):
-        self.sprite = None
+    def __init__(self, sprite_absolute_path=None, size=1):
+        self.sprite_path = sprite_absolute_path
+        self.sprite = pygame.image.load(self.sprite_path)
+        self.size = size
+        self.sprite_scaled_width = round(self.sprite.get_rect().width * self.size)
+        self.sprite_scaled_height = round(self.sprite.get_rect().height * self.size)
+        self.scaled_sprite = pygame.transform.scale(
+            self.sprite, (
+                self.sprite_scaled_width,
+                self.sprite_scaled_height
+            )
+        )
 
     def __str__(self):
         return 'sprite'
+
+    def run(self, obj):
+        engine.screen.blit(
+            self.scaled_sprite,
+            (obj.transform.position.x - round((self.sprite_scaled_width / 2)),
+             obj.transform.position.y - round((self.sprite_scaled_height / 2)))
+        )
 
 
 def update(f):
