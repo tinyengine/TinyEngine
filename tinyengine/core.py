@@ -127,21 +127,23 @@ class Input():
         pass
 
     def get_key(key):
+        for event in pygame.event.get():
+            pass
+
         keys = pygame.key.get_pressed()
 
         if keys[engine.key_map[key]]:
             return True
-        else:
-            return False
 
     def get_key_down(key):
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if pygame.key.get_pressed()[engine.key_map[key]]:
-                    return True
+        for event in pygame.event.get(pygame.KEYDOWN):
+            if pygame.key.get_pressed()[engine.key_map[key]]:
+                return True
 
-    def get_key_up():
-        pass
+    def get_key_up(key):
+        for event in pygame.event.get(pygame.KEYUP):
+            if event.key == ord(key.lower()):
+                return True
 
 
 def update(f):
