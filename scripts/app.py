@@ -10,4 +10,12 @@ class App(Core):
 
     @update
     def update(self):
-        pass
+        if Input.get_key_up('A'):
+            print('bla')
+
+        if Input.get_key_down('A'):
+            print('ble')
+
+        if Input.get_key('A'):
+            print('eeitaa')
+
