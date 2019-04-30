@@ -39,7 +39,27 @@ key_map = {
     'W': pygame.K_w,
     'X': pygame.K_x,
     'Y': pygame.K_y,
-    'Z': pygame.K_z
+    'Z': pygame.K_z,
+    '0': pygame.K_0,
+    '1': pygame.K_1,
+    '2': pygame.K_2,
+    '3': pygame.K_3,
+    '4': pygame.K_4,
+    '5': pygame.K_5,
+    '6': pygame.K_6,
+    '7': pygame.K_7,
+    '8': pygame.K_8,
+    '9': pygame.K_9,
+    'KP0': pygame.K_KP0,
+    'KP1': pygame.K_KP1,
+    'KP2': pygame.K_KP2,
+    'KP3': pygame.K_KP3,
+    'KP4': pygame.K_KP4,
+    'KP5': pygame.K_KP5,
+    'KP6': pygame.K_KP6,
+    'KP7': pygame.K_KP7,
+    'KP8': pygame.K_KP8,
+    'KP9': pygame.K_KP9,
 }
 
 
