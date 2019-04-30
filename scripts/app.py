@@ -10,4 +10,5 @@ class App(Core):
 
     @update
     def update(self):
-        pass
+        if(Input.get_key('A')):
+            print('apertou A')

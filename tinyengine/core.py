@@ -26,6 +26,9 @@ class Core():
             raise ValueError(err)
 
     def update(self):
+        for event in pygame.event.get():
+            pass
+
         for component in self.components.values():
             component.run(self)
 
@@ -120,6 +123,19 @@ class Sprite():
             (obj.transform.position.x - round((self.sprite_scaled_width / 2)),
              obj.transform.position.y - round((self.sprite_scaled_height / 2)))
         )
+
+
+class Input():
+    def __init__(self):
+        pass
+
+    def get_key(key):
+        keys = pygame.key.get_pressed()
+
+        if keys[engine.key_map[key]]:
+            return True
+        else:
+            return False
 
 
 def update(f):
