@@ -26,9 +26,6 @@ class Core():
             raise ValueError(err)
 
     def update(self):
-        for event in pygame.event.get():
-            pass
-
         for component in self.components.values():
             component.run(self)
 
@@ -136,6 +133,15 @@ class Input():
             return True
         else:
             return False
+
+    def get_key_down(key):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if pygame.key.get_pressed()[engine.key_map[key]]:
+                    return True
+
+    def get_key_up():
+        pass
 
 
 def update(f):
