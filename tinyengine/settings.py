@@ -9,3 +9,6 @@ HEIGHT = 500
 
 # Framerate of the game
 FRAMERATE = 30
+
+# Window title
+CAPTION = 'TinyEngine'

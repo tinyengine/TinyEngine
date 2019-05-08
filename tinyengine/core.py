@@ -142,7 +142,7 @@ class Input():
 
     def get_key_up(key):
         for event in pygame.event.get(pygame.KEYUP):
-            if event.key == ord(key.lower()):
+            if event.key == ord(ktey.lower()):
                 return True
 
 
