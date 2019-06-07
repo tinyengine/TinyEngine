@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import sys
+
 sys.path.append('../')
 import settings
 import scripts
@@ -8,7 +9,6 @@ from scripts import *
 import pkgutil
 import importlib
 from core import *
-
 
 screen = pygame.display.set_mode([settings.WIDTH, settings.HEIGHT], 0, 32)  # Setup window size to display
 screen.fill((0, 0, 0))  # Fill the screen with a default color - temporary
@@ -86,8 +86,8 @@ def main():
     for gameObject_name in game_objects:
         try:
             game_objects[gameObject_name].start()
-        except e:
-            print('error start')
+        except Exception as error:
+            print('error start', error)
 
     # Updating function
     while True:
