@@ -64,7 +64,7 @@ key_map = {
 }
 
 
-def main():
+def main(directory='scripts'):
     # Dict to care all game objects created
     game_objects = dict()
 
@@ -73,15 +73,17 @@ def main():
     # Take all scripts on scripts folder, wrap on game object variables on dictionary
     package = scripts
     for importer, modname, ispkg in pkgutil.iter_modules(package.__path__):
-        # Get module from package and create gameObject with the same name as script and attach an instance
-        module = importlib.import_module('scripts.{}'.format(modname))
-        my_class = getattr(module, '{}'.format(modname.capitalize()))
+        # Get module from package and create gameObject with the same name as scripts and attach an instance
+        module = importlib.import_module(f'{directory}.{modname}')
+        my_class = getattr(module, f'{modname.capitalize()}')
         # self.game_objects[modname] = GameObject(my_class(), str(modname))
         game_objects[modname] = my_class()
 
     # Setting up display and clock
     pygame.display.init()  # Initialize display module
-    print('Initializing display module') if pygame.display.get_init() else print('Display module initialization failed')
+    all_ok = 'Initializing display module'
+    error = 'Display module initialization failed'
+    print(all_ok) if pygame.display.get_init() else print(error)
 
     # Running start function in all gameObjects
     for gameObject_name in game_objects:
