@@ -10,6 +10,8 @@ import pkgutil
 import importlib
 from core import *
 
+
+pygame.display.set_caption(settings.CAPTION)
 screen = pygame.display.set_mode([settings.WIDTH, settings.HEIGHT], 0, 32)  # Setup window size to display
 screen.fill((0, 0, 0))  # Fill the screen with a default color - temporary
 
