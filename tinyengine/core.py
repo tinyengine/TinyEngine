@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
-import engine
-
+import tinyengine.engine as engine
+import os
 
 class Core():
     def __init__(self, name='NewGameObject'):
@@ -98,8 +98,8 @@ class Square():
 
 
 class Sprite():
-    def __init__(self, sprite_absolute_path=None, size=1):
-        self.sprite_path = sprite_absolute_path
+    def __init__(self, sprite_path=None, size=1):
+        self.sprite_path = f"../art/{sprite_path}"
         self.sprite = pygame.image.load(self.sprite_path)
         self.size = size
         self.sprite_scaled_width = round(self.sprite.get_rect().width * self.size)
