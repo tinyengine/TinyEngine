@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import sys
+
 sys.path.append('../')
 import settings
 import scripts
@@ -87,8 +88,8 @@ def main():
     for gameObject_name in game_objects:
         try:
             game_objects[gameObject_name].start()
-        except e:
-            print('error start')
+        except Exception as error:
+            print('error start', error)
 
     # Updating function
     while True:
