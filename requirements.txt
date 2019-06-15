@@ -5,5 +5,4 @@ pkg-resources==0.0.0
 pycodestyle==2.5.0
 pyflakes==2.1.0
 pygame==1.9.4
-pycodestyle==2.5.0
 pydocstyle==3.0.0
