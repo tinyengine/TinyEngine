@@ -39,11 +39,18 @@ class Transform():
         self.rotation = Vector().zero
         self.scale = Vector().zero
 
+    def move(self, move_direction):
+        self.position = move_direction
+
 
 class Vector():
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
+
+    @property
+    def right(self):
+        return Vector(1, 0)
 
     @property
     def zero(self):
@@ -90,10 +97,10 @@ class Square():
         pygame.draw.rect(engine.screen,
                          self.color,
                          pygame.Rect(obj.transform.position.x - self.width / 2,
-                                     obj.transform.position.y - self.height / 2,
-                                     self.width,
-                                     self.height
-                                     )
+                                    obj.transform.position.y - self.height / 2,
+                                    self.width,
+                                    self.height
+                                    )
                          )
 
 
