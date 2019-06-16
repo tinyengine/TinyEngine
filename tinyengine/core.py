@@ -49,8 +49,20 @@ class Vector():
         self.y = y
 
     @property
+    def up(self):
+        return Vector(0, 1)
+
+    @property
+    def down(self):
+        return Vector(0, -1)
+
+    @property
     def right(self):
         return Vector(1, 0)
+
+    @property
+    def left(self):
+        return Vector(-1, 0)
 
     @property
     def zero(self):
@@ -97,10 +109,10 @@ class Square():
         pygame.draw.rect(engine.screen,
                          self.color,
                          pygame.Rect(obj.transform.position.x - self.width / 2,
-                                    obj.transform.position.y - self.height / 2,
-                                    self.width,
-                                    self.height
-                                    )
+                                     obj.transform.position.y - self.height / 2,
+                                     self.width,
+                                     self.height
+                                     )
                          )
 
 
