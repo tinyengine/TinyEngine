@@ -50,19 +50,23 @@ class Vector():
 
     @property
     def up(self):
-        return Vector(0, 1)
+        self.y -= 1
+        return Vector(self.x, self.y)
 
     @property
     def down(self):
-        return Vector(0, -1)
+        self.y += 1
+        return Vector(self.x, self.y)
 
     @property
     def right(self):
-        return Vector(1, 0)
+        self.x += 1
+        return Vector(self.x, self.y)
 
     @property
     def left(self):
-        return Vector(-1, 0)
+        self.x -= 1
+        return Vector(self.x, self.y)
 
     @property
     def zero(self):
