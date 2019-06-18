@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
-import engine
-
+import tinyengine.engine as engine
+import os
 
 class Core():
     def __init__(self, name='NewGameObject'):
@@ -39,11 +39,34 @@ class Transform():
         self.rotation = Vector().zero
         self.scale = Vector().zero
 
+    def move(self, move_direction):
+        self.position = move_direction
+
 
 class Vector():
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
+
+    @property
+    def up(self):
+        self.y -= 1
+        return Vector(self.x, self.y)
+
+    @property
+    def down(self):
+        self.y += 1
+        return Vector(self.x, self.y)
+
+    @property
+    def right(self):
+        self.x += 1
+        return Vector(self.x, self.y)
+
+    @property
+    def left(self):
+        self.x -= 1
+        return Vector(self.x, self.y)
 
     @property
     def zero(self):
@@ -98,8 +121,8 @@ class Square():
 
 
 class Sprite():
-    def __init__(self, sprite_absolute_path=None, size=1):
-        self.sprite_path = sprite_absolute_path
+    def __init__(self, sprite_path=None, size=1):
+        self.sprite_path = f"../art/{sprite_path}"
         self.sprite = pygame.image.load(self.sprite_path)
         self.size = size
         self.sprite_scaled_width = round(self.sprite.get_rect().width * self.size)
