@@ -1,15 +1,9 @@
-import pygame
-from pygame.locals import *
-import sys
-
-sys.path.append('../')
-import settings
-import scripts
-from scripts import *
-import pkgutil
 import importlib
-from core import *
+import pkgutil
 
+import scripts
+import tinyengine.settings as settings
+from tinyengine.core import *
 
 pygame.display.set_caption(settings.CAPTION)
 screen = pygame.display.set_mode([settings.WIDTH, settings.HEIGHT], 0, 32)  # Setup window size to display
