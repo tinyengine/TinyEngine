@@ -1,0 +1,26 @@
+os: linux
+dist: trusty
+sudo: required
+env:
+  global:
+    - CC_TEST_REPORTER_ID=76d046d1783ed1069f79f4f888a7f0c46b3b32190b58c7ec77d142f54224cee2
+language: python
+cache: pip
+python:
+  - 3.6.5
+install:
+  - pip install -r requirements.txt
+script:
+  - flake8 .
+  - green tinyengine/tests.py
+  - coverage run -m py.test tinyengine/tests.py
+  - coverage report -m tinyengine/core.py tinyengine/engine.py tinyengine/settings.py
+before_script:
+  - curl -L "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64"
+    > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_success:
+  - codecov
