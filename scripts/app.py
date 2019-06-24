@@ -1,5 +1,7 @@
-from tinyengine.core import *
-import os
+from tinyengine.core import (
+    Vector, Core, Sprite, Input,
+    start, update
+)
 
 
 class App(Core):

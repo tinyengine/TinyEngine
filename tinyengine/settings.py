@@ -1,6 +1,3 @@
-import pygame
-from pygame.locals import *
-
 # Width of window
 WIDTH = 500
 

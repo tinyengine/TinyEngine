@@ -1,7 +1,6 @@
 import pygame
-from pygame.locals import *
+
 import tinyengine.engine as engine
-import os
 
 
 class Core():

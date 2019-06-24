@@ -1,12 +1,14 @@
 import importlib
 import pkgutil
 
+import pygame
+
 import scripts
 import tinyengine.settings as settings
-from tinyengine.core import *
 
 pygame.display.set_caption(settings.CAPTION)
-screen = pygame.display.set_mode([settings.WIDTH, settings.HEIGHT], 0, 32)  # Setup window size to display
+# Setup window size to display
+screen = pygame.display.set_mode([settings.WIDTH, settings.HEIGHT], 0, 32)
 screen.fill((0, 0, 0))  # Fill the screen with a default color - temporary
 
 key_map = {
@@ -68,7 +70,8 @@ def main(directory='scripts'):
     # Take all scripts on scripts folder, wrap on game object variables on dictionary
     package = scripts
     for importer, modname, ispkg in pkgutil.iter_modules(package.__path__):
-        # Get module from package and create gameObject with the same name as scripts and attach an instance
+        # Get module from package and create gameObject with the same
+        # name as scripts and attach an instance
         module = importlib.import_module(f'{directory}.{modname}')
         my_class = getattr(module, f'{modname.capitalize()}')
         # self.game_objects[modname] = GameObject(my_class(), str(modname))

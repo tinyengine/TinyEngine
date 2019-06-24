@@ -34,4 +34,3 @@ class TestVector(unittest.TestCase):
         v_5_5 = Vector(5, 5)
         self.assertEqual(v_5_5.position, (5, 5))
         self.assertEqual(v_5_5.zero.position, (0, 0))
-
