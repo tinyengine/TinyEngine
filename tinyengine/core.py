@@ -1,7 +1,7 @@
 import pygame
-from pygame.locals import *
+
 import tinyengine.engine as engine
-import os
+
 
 class Core():
     def __init__(self, name='NewGameObject'):
@@ -48,6 +48,13 @@ class Vector():
         self.x = x
         self.y = y
 
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+
+    @property
+    def position(self):
+        return (self.x, self.y)
+
     @property
     def up(self):
         self.y -= 1
@@ -78,6 +85,10 @@ class RGB():
         self.x = x
         self.y = y
         self.z = z
+
+    @property
+    def value(self):
+        return (self.x, self.y, self.z)
 
     @property
     def black(self):
@@ -173,6 +184,7 @@ def update(f):
     def wrapper(*args):
         super(args[0].__class__, args[0]).update()
         return f(*args)
+
     return wrapper
 
 
@@ -180,4 +192,5 @@ def start(f):
     def wrapper(*args):
         super(args[0].__class__, args[0]).start()
         return f(*args)
+
     return wrapper
