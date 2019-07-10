@@ -37,6 +37,12 @@ class TestVector(unittest.TestCase):
     def test_vector_str_representation(self):
         self.assertEqual(Vector().__str__(), "Vector(0, 0)")
 
+    def test_vector_get_only_x(self):
+        self.assertEqual(self.vector.x, 0)
+
+    def test_vector_get_only_y(self):
+        self.assertEqual(self.vector.y, 0)
+
 
 class TestRGB(unittest.TestCase):
     def setUp(self):

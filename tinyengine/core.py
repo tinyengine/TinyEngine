@@ -40,7 +40,7 @@ class Transform:
         self.scale = Vector().zero
 
     def move(self, move_direction):
-        self.position = move_direction
+        self.position = Vector(move_direction[0], move_direction[1])
 
 
 class Vector:
@@ -120,7 +120,7 @@ class RGB:
         return 0, 0, 255
 
 
-class Square():
+class Square:
     def __init__(self, width, height, color=RGB().white):
         self.width = width
         self.height = height
@@ -169,7 +169,7 @@ class Input:
     def __init__(self):
         pass
 
-    def get_key(self, key):
+    def get_key(key):
         for event in pygame.event.get():
             pass
 
@@ -178,12 +178,12 @@ class Input:
         if keys[engine.key_map[key]]:
             return True
 
-    def get_key_down(self, key):
+    def get_key_down(key):
         for event in pygame.event.get(pygame.KEYDOWN):
             if pygame.key.get_pressed()[engine.key_map[key]]:
                 return True
 
-    def get_key_up(self, key):
+    def get_key_up(key):
         for event in pygame.event.get(pygame.KEYUP):
             if event.key == ord(key.lower()):
                 return True
