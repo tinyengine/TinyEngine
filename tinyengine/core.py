@@ -3,7 +3,7 @@ import pygame
 import tinyengine.engine as engine
 
 
-class Core():
+class Core:
     def __init__(self, name='NewGameObject'):
         self.name = name
         self.transform = Transform()
@@ -33,7 +33,7 @@ class Core():
         pass
 
 
-class Transform():
+class Transform:
     def __init__(self):
         self.position = Vector().zero
         self.rotation = Vector().zero
@@ -43,7 +43,7 @@ class Transform():
         self.position = move_direction
 
 
-class Vector():
+class Vector:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -53,62 +53,71 @@ class Vector():
 
     @property
     def position(self):
-        return (self.x, self.y)
+        return self.x, self.y
 
     @property
     def up(self):
         self.y -= 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def down(self):
         self.y += 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def right(self):
         self.x += 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def left(self):
         self.x -= 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def zero(self):
-        return Vector(0, 0)
+        self.x = 0
+        self.y = 0
+        return self.position
 
 
-class RGB():
+class RGB:
     def __init__(self, x=0, y=0, z=0):
+        x = 0 if x < 0 else x
+        y = 0 if y < 0 else y
+        z = 0 if z < 0 else z
+
         self.x = x
         self.y = y
         self.z = z
 
+    def __str__(self):
+        return f"RGB({self.x}, {self.y}, {self.z})"
+
     @property
     def value(self):
-        return (self.x, self.y, self.z)
+        return self.x, self.y, self.z
 
     @property
     def black(self):
-        return (0, 0, 0)
+        return 0, 0, 0
 
     @property
     def white(self):
-        return (255, 255, 255)
+        return 255, 255, 255
 
     @property
     def red(self):
-        return (255, 0, 0)
+        return 255, 0, 0
 
     @property
     def green(self):
-        return (0, 255, 0)
+        return 0, 255, 0
 
     @property
     def blue(self):
-        return (0, 0, 255)
+        return 0, 0, 255
 
 
 class Square():
@@ -131,7 +140,7 @@ class Square():
                          )
 
 
-class Sprite():
+class Sprite:
     def __init__(self, sprite_path=None, size=1):
         self.sprite_path = f"../art/{sprite_path}"
         self.sprite = pygame.image.load(self.sprite_path)
@@ -156,11 +165,11 @@ class Sprite():
         )
 
 
-class Input():
+class Input:
     def __init__(self):
         pass
 
-    def get_key(key):
+    def get_key(self, key):
         for event in pygame.event.get():
             pass
 
@@ -169,12 +178,12 @@ class Input():
         if keys[engine.key_map[key]]:
             return True
 
-    def get_key_down(key):
+    def get_key_down(self, key):
         for event in pygame.event.get(pygame.KEYDOWN):
             if pygame.key.get_pressed()[engine.key_map[key]]:
                 return True
 
-    def get_key_up(key):
+    def get_key_up(self, key):
         for event in pygame.event.get(pygame.KEYUP):
             if event.key == ord(key.lower()):
                 return True

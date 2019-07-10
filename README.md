@@ -1,5 +1,7 @@
 ### TinyEngine
 
+[![Build Status](https://travis-ci.org/tinyengine/TinyEngine.svg?branch=master)](https://travis-ci.org/tinyengine/TinyEngine)
+
 A very small 2D Game Engine which helps you learn how to make games.
 
 ### Why did i do this?
