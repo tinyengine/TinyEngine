@@ -83,21 +83,21 @@ class Vector:
 
 
 class RGB:
-    def __init__(self, x=0, y=0, z=0):
-        x = 0 if x < 0 else x
-        y = 0 if y < 0 else y
-        z = 0 if z < 0 else z
+    def __init__(self, red=0, green=0, blue=0):
+        red = 0 if red < 0 else red
+        green = 0 if green < 0 else green
+        blue = 0 if blue < 0 else blue
 
-        self.x = x
-        self.y = y
-        self.z = z
+        self.red = red
+        self.green = green
+        self.blue = blue
 
     def __str__(self):
-        return f"RGB({self.x}, {self.y}, {self.z})"
+        return f"RGB({self.red}, {self.green}, {self.blue})"
 
     @property
     def value(self):
-        return self.x, self.y, self.z
+        return self.red, self.green, self.blue
 
     @property
     def black(self):
