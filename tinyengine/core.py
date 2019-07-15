@@ -88,16 +88,16 @@ class RGB:
         green = 0 if green < 0 else green
         blue = 0 if blue < 0 else blue
 
-        self.red = red
-        self.green = green
-        self.blue = blue
+        self.red_palette = red
+        self.green_palette = green
+        self.blue_palette = blue
 
     def __str__(self):
-        return f"RGB({self.red}, {self.green}, {self.blue})"
+        return f"RGB({self.red_palette}, {self.green_palette}, {self.blue_palette})"
 
     @property
     def value(self):
-        return self.red, self.green, self.blue
+        return self.red_palette, self.green_palette, self.blue_palette
 
     @property
     def black(self):
