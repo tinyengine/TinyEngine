@@ -3,7 +3,7 @@ import pygame
 import tinyengine.engine as engine
 
 
-class Core():
+class Core:
     def __init__(self, name='NewGameObject'):
         self.name = name
         self.transform = Transform()
@@ -33,17 +33,17 @@ class Core():
         pass
 
 
-class Transform():
+class Transform:
     def __init__(self):
         self.position = Vector().zero
         self.rotation = Vector().zero
         self.scale = Vector().zero
 
     def move(self, move_direction):
-        self.position = move_direction
+        self.position = Vector(move_direction[0], move_direction[1])
 
 
-class Vector():
+class Vector:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -53,65 +53,74 @@ class Vector():
 
     @property
     def position(self):
-        return (self.x, self.y)
+        return self.x, self.y
 
     @property
     def up(self):
         self.y -= 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def down(self):
         self.y += 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def right(self):
         self.x += 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def left(self):
         self.x -= 1
-        return Vector(self.x, self.y)
+        return self.position
 
     @property
     def zero(self):
-        return Vector(0, 0)
+        self.x = 0
+        self.y = 0
+        return self.position
 
 
-class RGB():
-    def __init__(self, x=0, y=0, z=0):
-        self.x = x
-        self.y = y
-        self.z = z
+class RGB:
+    def __init__(self, red=0, green=0, blue=0):
+        red = 0 if red < 0 else red
+        green = 0 if green < 0 else green
+        blue = 0 if blue < 0 else blue
+
+        self.red_palette = red
+        self.green_palette = green
+        self.blue_palette = blue
+
+    def __str__(self):
+        return f"RGB({self.red_palette}, {self.green_palette}, {self.blue_palette})"
 
     @property
     def value(self):
-        return (self.x, self.y, self.z)
+        return self.red_palette, self.green_palette, self.blue_palette
 
     @property
     def black(self):
-        return (0, 0, 0)
+        return 0, 0, 0
 
     @property
     def white(self):
-        return (255, 255, 255)
+        return 255, 255, 255
 
     @property
     def red(self):
-        return (255, 0, 0)
+        return 255, 0, 0
 
     @property
     def green(self):
-        return (0, 255, 0)
+        return 0, 255, 0
 
     @property
     def blue(self):
-        return (0, 0, 255)
+        return 0, 0, 255
 
 
-class Square():
+class Square:
     def __init__(self, width, height, color=RGB().white):
         self.width = width
         self.height = height
@@ -131,7 +140,7 @@ class Square():
                          )
 
 
-class Sprite():
+class Sprite:
     def __init__(self, sprite_path=None, size=1):
         self.sprite_path = f"../art/{sprite_path}"
         self.sprite = pygame.image.load(self.sprite_path)
@@ -156,7 +165,7 @@ class Sprite():
         )
 
 
-class Input():
+class Input:
     def __init__(self):
         pass
 

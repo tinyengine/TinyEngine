@@ -1,4 +1,6 @@
-from tinyengine.core import *
+from tinyengine.core import (
+    Core, start, update
+)
 
 
 class Foo(Core):
